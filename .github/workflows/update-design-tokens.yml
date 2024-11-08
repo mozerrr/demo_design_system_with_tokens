@@ -1,0 +1,41 @@
+name: Update and Deploy Design Tokens
+
+on:
+  repository_dispatch:
+    types: [update-tokens]  # Ожидаем запрос с типом события `update-tokens`
+
+jobs:
+  update-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Process Design Tokens
+        env:
+          TOKEN_PAYLOAD: ${{ github.event.client_payload.tokens }}
+          COMMIT_MESSAGE: ${{ github.event.client_payload.commitMessage }}
+          FILENAME: ${{ github.event.client_payload.filename }}
+        run: |
+          # Сохранение токенов в файл
+          echo "$TOKEN_PAYLOAD" > "./tokens/$FILENAME.json"
+
+      - name: Commit and Push Changes
+        run: |
+          git config --local user.name "GitHub Actions"
+          git config --local user.email "actions@github.com"
+          git add ./tokens/
+          git commit -m "$COMMIT_MESSAGE" || echo "No changes to commit"
+          git push origin main
+
+#      - name: Deploy to Server
+#        env:
+#          SERVER: ${{ secrets.SERVER }}
+#          USERNAME: ${{ secrets.USERNAME }}
+#          PASSWORD: ${{ secrets.PASSWORD }}
+#        run: |
+#          # Деплой токенов на сервер
+#          scp -r ./tokens ${USERNAME}@${SERVER}:/path/to/deployment/folder
+#          # Перезапуск сервера, если требуется
+#          ssh ${USERNAME}@${SERVER} "pm2 restart your-app"
