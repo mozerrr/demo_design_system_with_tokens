@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:friflex_api/components/button.dart';
-import 'package:friflex_api/new_home/coffee_detail.dart';
+import 'package:friflex_api/components/image_from_firebase.dart';
 
 class CoffeeListScreen extends StatelessWidget {
   static const firstCoffee = {
@@ -54,7 +55,7 @@ class CoffeeListScreen extends StatelessWidget {
                   CustomCoffeeButton(
                     height: 56,
                     width: 56,
-                    child: Icon(Icons.add),
+                    child: SvgPicture.asset('assets/icons/24x24/filters.svg'),
                   ),
                 ],
               ),
@@ -128,7 +129,7 @@ class CoffeeListScreen extends StatelessWidget {
                     print(index);
                     return CoffeeCard(
                       key: Key(index.toString()),
-                      imagePath: 'assets/images/coffee_image_${index + 1}.png',
+                      imagePath: 'gs://friflex-api-meetup.appspot.com/images/coffee_image_${index + 1}.png',
                       name: coffee['name']!,
                       description: coffee['description']!,
                       cost: coffee['price']!,
@@ -174,7 +175,7 @@ class CoffeeCard extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(imagePath),
+            ImageFromFirebase(imageUrl: imagePath),
             SizedBox(height: 8),
             Text(name),
             SizedBox(height: 4),
@@ -211,7 +212,7 @@ class CoffeeCard extends StatelessWidget {
 //               child: ListTile(
 //                 // заменить на network
 //                 leading:
-//                     Image.asset("assets/images/coffee_image_${index + 1}.png"),
+//                     Image.network("gs://friflex-api-meetup.appspot.com/images/coffee_image_${index + 1}.png"),
 //                 title: Text(coffee['name']!),
 //                 subtitle: Text(coffee['description']!),
 //                 trailing: Text(coffee['price']!),

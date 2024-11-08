@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:friflex_api/components/button.dart';
+import 'package:friflex_api/components/image_from_firebase.dart';
 
 class CoffeeDetailScreen extends StatelessWidget {
   final Map<String, String> coffee;
@@ -40,7 +41,7 @@ class CoffeeDetailScreen extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 24),
-                  Image.asset("assets/images/capuchino_full.png"),
+                  ImageFromFirebase(imageUrl: "gs://friflex-api-meetup.appspot.com/images/capuchino_full.png"),
                   const SizedBox(height: 16),
                   Row(
                     children: [

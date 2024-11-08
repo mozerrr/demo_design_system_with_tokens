@@ -10,16 +10,18 @@ class CoffeeButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {},
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.brown,
-        // padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
-      ),
-      child: Text(
-        text,
-        style: TextStyle(
-          color: Color(0xFFFFFFFF),
+    return InkWell(
+      onTap: () {},
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.brown,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Text(
+          text,
+          style: TextStyle(
+            color: Color(0xFFFFFFFF),
+          ),
         ),
       ),
     );

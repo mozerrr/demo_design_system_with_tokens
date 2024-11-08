@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:friflex_api/components/button.dart';
+import 'package:friflex_api/components/image_from_firebase.dart';
 
 class OrderTrackingScreen extends StatelessWidget {
   const OrderTrackingScreen({super.key});
@@ -11,7 +12,7 @@ class OrderTrackingScreen extends StatelessWidget {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          Image.asset("assets/images/map.png"),
+          ImageFromFirebase(imageUrl: "gs://friflex-api-meetup.appspot.com/images/map.png"),
           Positioned(
             top: 165,
             left: 61,
@@ -119,7 +120,7 @@ class OrderTrackingScreen extends StatelessWidget {
                       Container(
                         width: 56,
                         height: 56,
-                        child: Image.asset('assets/images/courier.png'),
+                        child: ImageFromFirebase(imageUrl: "gs://friflex-api-meetup.appspot.com/images/courier.png"),
                       ),
                       const SizedBox(width: 12),
                       const Column(

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:friflex_api/components/button.dart';
+import 'package:friflex_api/components/image_from_firebase.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -15,7 +16,7 @@ class WelcomeScreen extends StatelessWidget {
           ColoredBox(color: Colors.black),
           Align(
             alignment: Alignment.topCenter,
-            child: Image.asset("assets/images/coffee.png"),
+            child: ImageFromFirebase(imageUrl: "gs://friflex-api-meetup.appspot.com/images/coffee.png"),
           ),
           Align(
             alignment: Alignment.bottomCenter,

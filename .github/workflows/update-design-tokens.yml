@@ -20,6 +20,7 @@ jobs:
           # Сохранение токенов в файл
           echo "$TOKEN_PAYLOAD" > "./tokens/$FILENAME"
 
+      - run: sh generate.sh "./tokens/design-tokens.tokens.json"
       - name: Commit and Push Changes
         env:
           COMMIT_MESSAGE: ${{ github.event.client_payload.commitMessage }}
@@ -27,8 +28,18 @@ jobs:
           git config --local user.name "GitHub Actions"
           git config --local user.email "actions@github.com"
           git add ./tokens/
+          git add ./lib/generated_paths.dart
           git commit -m "$COMMIT_MESSAGE" || echo "No changes to commit"
           git push origin main
+
+      - run: npm ci
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FRIFLEX_API_MEETUP }}
+          projectId: friflex-api-meetup
+        env:
+          FIREBASE_CLI_EXPERIMENTS: webframeworks
 
 #      - name: Deploy to Server
 #        env:
