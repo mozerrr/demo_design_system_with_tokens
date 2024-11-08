@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyAHSUFzR_EpTBgh26mpD5C_zOoe8ZzhoRg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1075045396500</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.friflex.api.friflexApi</string>
+	<key>PROJECT_ID</key>
+	<string>friflex-api-meetup</string>
+	<key>STORAGE_BUCKET</key>
+	<string>friflex-api-meetup.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1075045396500:ios:68310079874e3ddccfb701</string>
+	<key>DATABASE_URL</key>
+	<string>https://friflex-api-meetup-default-rtdb.europe-west1.firebasedatabase.app</string>
+</dict>
+</plist>
