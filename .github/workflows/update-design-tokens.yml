@@ -15,13 +15,14 @@ jobs:
       - name: Process Design Tokens
         env:
           TOKEN_PAYLOAD: ${{ github.event.client_payload.tokens }}
-          COMMIT_MESSAGE: ${{ github.event.client_payload.commitMessage }}
           FILENAME: ${{ github.event.client_payload.filename }}
         run: |
           # Сохранение токенов в файл
           echo "$TOKEN_PAYLOAD" > "./tokens/$FILENAME.json"
 
       - name: Commit and Push Changes
+        env:
+          COMMIT_MESSAGE: ${{ github.event.client_payload.commitMessage }}
         run: |
           git config --local user.name "GitHub Actions"
           git config --local user.email "actions@github.com"
