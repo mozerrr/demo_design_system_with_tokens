@@ -18,7 +18,7 @@ jobs:
           FILENAME: ${{ github.event.client_payload.filename }}
         run: |
           # Сохранение токенов в файл
-          echo "$TOKEN_PAYLOAD" > "./tokens/$FILENAME.json"
+          echo "$TOKEN_PAYLOAD" > "./tokens/$FILENAME"
 
       - name: Commit and Push Changes
         env:
